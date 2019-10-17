@@ -1,0 +1,17 @@
+service: template
+
+plugins:
+  - serverless-finch
+
+custom:
+  s3Bucket: template
+  client:
+    bucketName: deployedcur8front # If you want to deploy the front-end, change this to a universally unique AWS S3 bucket name
+    distributionFolder: ../frontend/dist
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: dev
+  region: us-west-2
+  environment:
