@@ -5406,7 +5406,7 @@ eslint-plugin-vue@vuejs/eslint-plugin-vue#edf43ffe1c56db99c81d8eaa62de36b2fa4760
   version "5.2.2"
   resolved "https://codeload.github.com/vuejs/eslint-plugin-vue/tar.gz/edf43ffe1c56db99c81d8eaa62de36b2fa47604e"
   dependencies:
-    vue-eslint-parser "^6.0.2"
+    vue-eslint-parser "^6.0.4"
 
 eslint-scope@^3.7.1:
   version "3.7.3"
