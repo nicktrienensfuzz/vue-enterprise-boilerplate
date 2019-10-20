@@ -32,14 +32,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" module>
-@import '@design';
-
-.active a {
-  font-weight: 600;
-  color: $color-link-text-active;
-  text-decoration: none;
-  cursor: default;
-}
-</style>
