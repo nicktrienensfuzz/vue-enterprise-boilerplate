@@ -8,7 +8,13 @@ export default {
   <% if (blocks.indexOf('template') === -1) {
   %>render(h) {
     return <div/>
-  }<% } %>
+  }<% }, %>
+    data() {
+      return {}
+    },
+    computed: {
+    },
+
 }
 </script>
 <%

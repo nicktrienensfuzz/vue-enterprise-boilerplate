@@ -19,7 +19,7 @@ export default {
 
 <template>
   <Layout>
-    <%= titleName %>
+    <h2><%= titleName %></h2>
   </Layout>
 </template>
 <%
