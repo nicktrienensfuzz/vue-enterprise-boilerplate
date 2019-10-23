@@ -11,6 +11,10 @@ export default {
           name: 'home',
           title: 'Home',
         },
+        {
+          name: 'table',
+          title: 'Table',
+        },
       ],
       loggedInNavRoutes: [
         {
@@ -38,14 +42,17 @@ export default {
 
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand href="#">NavBar</b-navbar-brand>
+    <b-navbar toggleable="lg" type="light" variant="warning">
+      <b-navbar-toggle target="nav-collapse" left></b-navbar-toggle>
+      <b-navbar-brand href="#" left>NavBar</b-navbar-brand>
 
-      <b-navbar-nav left>
-        <NavBarRoutes :routes="persistentNavRoutes" />
-        <NavBarRoutes v-if="loggedIn" :routes="loggedInNavRoutes" />
-        <NavBarRoutes v-else :routes="loggedOutNavRoutes" />
-      </b-navbar-nav>
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav left>
+          <NavBarRoutes :routes="persistentNavRoutes" />
+          <NavBarRoutes v-if="loggedIn" :routes="loggedInNavRoutes" />
+          <NavBarRoutes v-else :routes="loggedOutNavRoutes" />
+        </b-navbar-nav>
+      </b-collapse>
     </b-navbar>
   </div>
 </template>

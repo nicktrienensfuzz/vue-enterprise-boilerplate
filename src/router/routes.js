@@ -1,10 +1,29 @@
 import store from '@state/store'
-
 export default [
   {
     path: '/',
     name: 'home',
     component: () => lazyLoadView(import('@views/home.vue')),
+  },
+  {
+    path: '/table',
+    name: 'table',
+    component: () => lazyLoadView(import('@views/table.vue')),
+    beforeResolve(routeTo, routeFrom, next) {
+      // console.log("beforeResolve Table");
+      store
+        .dispatch('table/fetchItems')
+        .then((user) => {
+          // console.log(user);
+          routeTo.params.items = user
+          next()
+        })
+        .catch(() => {
+          // console.log(error);
+          next({ name: '404', params: { resource: 'Items' } })
+        })
+    },
+    props: (items) => ({ items: store.state.table.items }),
   },
   {
     path: '/login',
@@ -18,7 +37,6 @@ export default [
           next({ name: 'home' })
         } else {
           // Continue to the login page
-          next()
         }
       },
     },
@@ -39,6 +57,7 @@ export default [
     meta: {
       authRequired: true,
       beforeResolve(routeTo, routeFrom, next) {
+        // console.log("before res")
         store
           // Try to fetch the user's information by their username
           .dispatch('users/fetchUser', { username: routeTo.params.username })
@@ -47,6 +66,7 @@ export default [
             // be provided as a prop for the view component below.
             routeTo.params.user = user
             // Continue to the route.
+            // console.log("abpout to move to troute")
             next()
           })
           .catch(() => {
